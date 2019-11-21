@@ -81,7 +81,7 @@ function Traininglist(){
         {
             Header:'date',
             accessor:'date',
-            Cell: () => moment().format('MMMM Do YYYY, h:mm:ss a')
+            Cell: d => moment.utc(d.value).format('MMMM Do YYYY, h:mm:ss a')
         
         },
         {
@@ -126,9 +126,7 @@ function Traininglist(){
                    
         <div>
             <Grid container>
-                <Grid item>
-                    <Addtraining saveTraining={saveTraining}/>
-                </Grid>
+
                 <Grid style={{padding: 15}} item>
                     <CSVLink data={trainings}>Export data</CSVLink>
                 </Grid>

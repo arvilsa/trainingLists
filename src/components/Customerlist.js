@@ -80,6 +80,22 @@ function Customerlist(){
         .catch(err=>console.error(err))
     }
 
+    const saveTraining =(newTraining)=>{
+        fetch('https://customerrest.herokuapp.com/api/trainings',
+        {
+            method: 'POST',
+            headers : {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newTraining)
+        }
+        )
+        .catch(err=> console.error(err));
+
+
+
+    }
+
     const filterCaseInsensitive = (filter, row) => {
         const id = filter.pivotId || filter.id;
         if (row[id] !== null && typeof row[id] === 'string') {
@@ -130,6 +146,13 @@ function Customerlist(){
             Header:'phone',
             accessor:'phone'
         
+        },
+        {
+            filterable: false,
+            sortable: false,
+            width: 100,
+            Cell: row=> <Addtraining  saveTraining = {saveTraining} customer={row.original}/>
+       
         },
         {
             filterable: false,

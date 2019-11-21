@@ -20,9 +20,16 @@ export default function Addtraining(props){
         date: '',
         duration:'',
         activity:'',
+        customer:''
     });
 
     const handleClickOpen = () => {
+      console.log(props.customer)
+      setTraining({
+
+        customer: props.customer.firstname
+             
+    })
         setOpen(true);
       };
     
@@ -36,7 +43,7 @@ export default function Addtraining(props){
       };
   
       const addTraining =()=>{
-        props.saveTraining(training);
+        props.saveTraining({...training, customer: props.customer.links[0].href});
         handleClose();
       }
 
@@ -52,6 +59,7 @@ export default function Addtraining(props){
                   Insert date, duration, activity and customer
                   </DialogContentText>
                     <TextField
+                            type='date'
                             autoFocus
                             margin="dense"
                             name="date"
@@ -76,14 +84,7 @@ export default function Addtraining(props){
                             label="activity"
                             fullWidth
                     />
-                    <TextField
-                            margin="dense"
-                            name="customer"
-                            value= {training.customer}
-                            onChange = {(e)=> handleChange(e)}
-                            label="customer"
-                            fullWidth
-                    />
+          
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">
