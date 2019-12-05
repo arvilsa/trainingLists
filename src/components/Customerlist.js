@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
-import Button from '@material-ui/core/Button';
 import { CSVLink} from "react-csv";
 import Grid from '@material-ui/core/Grid';
 import Editcustomer from "./Editcustomer";
 import Addcustomer from "./Addcustomer"
 import Addtraining from "./Addtraining";
+import { IconButton } from '@material-ui/core'
+import DeleteIcon from '@material-ui/icons/Delete';
 
 function Customerlist(){
 
@@ -150,7 +151,7 @@ function Customerlist(){
         {
             filterable: false,
             sortable: false,
-            width: 100,
+            width: 200,
             Cell: row=> <Addtraining  saveTraining = {saveTraining} customer={row.original}/>
        
         },
@@ -165,7 +166,11 @@ function Customerlist(){
             accessor: 'links[0].href',
             filterable: false,
             sortable: false,
-            Cell: ({value})=> <Button size="small" color="secondary" onClick={()=>deleteCustomer(value)}>Delete</Button>
+            Cell: ({value})=> 
+            <IconButton aria-label="delete" size="small" color="primary" onClick={()=>deleteCustomer(value)}>
+                <DeleteIcon />
+            </IconButton>
+            //<Button size="small" color="secondary" onClick={()=>deleteCustomer(value)}>Delete</Button>
             // sisään menee value/row etc, renderöi buttonin
             //kuuntelija (onClick) tarvitsee nuolifunktion ei suoraan funktiokutsua (deleteCustomer())
         }

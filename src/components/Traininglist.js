@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
-import Button from '@material-ui/core/Button';
 import { CSVLink} from "react-csv";
 import Grid from '@material-ui/core/Grid';
 import moment from 'moment';
-import Addtraining from "./Addtraining"
+import { IconButton } from '@material-ui/core'
+import DeleteIcon from '@material-ui/icons/Delete';
 
 
 function Traininglist(){
@@ -36,7 +36,7 @@ function Traininglist(){
     }
 
     const deleteTraining = (id) => {
-        if (window.confirm('Are you sure you want to delete training?'))
+        if (window.confirm('Are you sure you want to delete this training?'))
         fetch('https://customerrest.herokuapp.com/api/trainings/'+id, {method:'DELETE'})
             .then(res=> fetchTrainings())
             .then(res => setMessage('Training deleted')) 
@@ -81,7 +81,7 @@ function Traininglist(){
         {
             Header:'date',
             accessor:'date',
-            Cell: d => moment.utc(d.value).format('MMMM Do YYYY, h:mm:ss a')
+            Cell: d => moment.utc(d.value).format('ddd, DD[/]MM[/]YY, h:mm a')
         
         },
         {
@@ -110,7 +110,10 @@ function Traininglist(){
             accessor: 'id',
             filterable: false,
             sortable: false,
-            Cell: ({value})=> <Button size="small" color="secondary" onClick={()=>deleteTraining(value)}>Delete</Button>
+            Cell: ({value})=> 
+            <IconButton aria-label="delete" size="small" color="primary" onClick={()=>deleteTraining(value)}>
+                <DeleteIcon />
+            </IconButton>
             // sisään menee value(accessor), renderöi buttonin
             //kuuntelija (onClick) tarvitsee nuolifunktion ei suoraan funktiokutsua (deleteCustomer())
         }

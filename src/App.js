@@ -8,6 +8,7 @@ import './App.css';
 import Customerlist from './components/Customerlist';
 import Traininglist from './components/Traininglist';
 import Home from './components/Home';
+import TrainingCalendar from './components/TrainingCalendar';
 
 function App() {
   const padding = { padding: 5 }
@@ -19,10 +20,12 @@ function App() {
             <Link style={padding} to="/">Home</Link>
             <Link style={padding} to="/trainings">trainings</Link>
             <Link style={padding} to="/customers">customers</Link>
+            <Link style={padding} to="/calendar">calendar</Link>
           </div>
             <Route exact path="/" render={() => <Home />} />
             <Route path="/trainings" render={() => <Traininglist />} />
             <Route path="/customers" render={() => <Customerlist />} />
+            <Route path="/calendar" render={() => <TrainingCalendar />} />
         </div>
       </Router>
     </div>
