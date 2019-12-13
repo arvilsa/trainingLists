@@ -125,7 +125,7 @@ function Traininglist(){
         
         
         <div>
- 
+            <h1>Trainings</h1>
                    
         <div>
             <Grid container>

@@ -50,9 +50,14 @@ const TrainingCalendar=(props)=> {
       );
 
     return (
-    <div>
-        <CalendarWithEvents />
-    </div>
+      <div>
+        <h1>Calendar</h1>
+        <div>
+          <CalendarWithEvents />
+        </div>
+
+      </div>
+
     )
     
 }

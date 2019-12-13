@@ -183,17 +183,21 @@ function Customerlist(){
     return(   
         
         <div>
-            <Grid container>
-                <Grid item>
-                    <Addcustomer saveCustomer={saveCustomer}/>
-                </Grid>
-                <Grid style={{padding: 15}} item>
-                    <CSVLink data={customers}>Export data</CSVLink>
-                </Grid>
-            </Grid >
- 
-            <ReactTable filterable={true} columns={columns} data ={customers} defaultFilterMethod={filterCaseInsensitive}/>
-            
+            <h1>Trainings</h1>
+        
+            <div>
+                <Grid container>
+                    <Grid item>
+                        <Addcustomer saveCustomer={saveCustomer}/>
+                    </Grid>
+                    <Grid style={{padding: 15}} item>
+                        <CSVLink data={customers}>Export data</CSVLink>
+                    </Grid>
+                </Grid >
+    
+                <ReactTable filterable={true} columns={columns} data ={customers} defaultFilterMethod={filterCaseInsensitive}/>
+                
+            </div>
         </div>
     )
 
